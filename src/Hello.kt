@@ -1,11 +1,6 @@
 fun main(args: Array<String>){
-    var five: Char = '5'
-    five.toString()
-    five.toByte()
-    five.toShort()
-    five.toInt()
-    five.toDouble()
-    five.toFloat()
-    five.toLong()
+    println("Введите ваше имя:")
+    var name:String? = readLine()
+    print("Приветствие пользователя $name")
 }
 

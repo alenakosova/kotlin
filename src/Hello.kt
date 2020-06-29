@@ -1,73 +1,48 @@
-fun main(args: Array<String>){
-    var points = 0;
-    //Вопрос 1
-    println("Каждый день Земля становится тяжелее. Почему?")
-    println("A. Ядро Земли постепенно увеличивается")
-    println("B. Земля \"поглощает\" эфир, который увеличивает её массу.")
-    println("C. Оседает космическая пыль")
-    println("Введите вариант ответа (A, B или C)")
-    var result = readLine()
-    when(result){
-        "C","c" -> points++;
-        else -> print("Правильный ответ C. ОседаеB космическая пыль")
-    }
+import java.util.*
+fun main() {
+    println("Введите сумму вклада:")
+    var depositSum: Int = Integer.valueOf(readLine())
 
-    //Вопрос 2
-    println("Если рулон скотча размотать в вакууме, то...")
-    println("A. В обычном состоянии он перестанет быть клейким")
-    println("B. Возникнет рентгеновское излучение")
-    println("C. Лента скота загорится")
-    println("Введите вариант ответа (A, B или C)")
-    result = readLine()
-    when(result){
-        "B","b" -> points++;
-        else -> print("Правильный ответ B. Возникнет рентгеновское излучение")
-    }
-    //Вопрос 3
-    println("Что способно преодоелть звуковой барьер?")
-    println("A. Кнут")
-    println("B. Будильник")
-    println("C. Мельница")
-    println("Введите вариант ответа (A, B или C)")
-    result = readLine()
-    when(result){
-        "A","a" -> points++;
-        else -> print("Правильный ответ A. Кнут")
-    }
-    //Вопрос 4
-    println("Что на практике доказал Стивен Хокинг?")
-    println("A. Черные дыры - выдумка")
-    println("B. Перемещение во времени невозможно")
-    println("C. Люди не могут обмениваться мыслями")
-    println("Введите вариант ответа (A, B или C)")
-    result = readLine()
-    when(result){
-        "B","b" -> points++;
-        else -> print("Правильный ответ B. Перемещение во времени невозможно")
-    }
+    println("Введите количество месяцев для вклада:")
+    val onMonths: Int = Integer.valueOf(readLine())
 
-    //Вопрос 5
-    println("Какие насекомые способны делать подобие процедуры вакцинации?")
-    println("A. Пчёлы")
-    println("B. Муравьи")
-    println("C. Стрекозы")
-    println("Введите вариант ответа (A, B или C)")
-    result = readLine()
-    when(result){
-        "B","b" -> points++
-        else -> print("Правильный ответ B. Муравьи")
-    }
+    println("Введите ежемесячный процент по вкладу:")
+    val depositPercent = Integer.valueOf(readLine())
 
-    //Результат
-    when(points){
-        0 -> print("Эрудиция 0/5")
-        1 -> print("Эрудиция 1/5")
-        2 -> print("Эрудиция 2/5")
-        3 -> print("Эрудиция 3/5")
-        4 -> print("Эрудиция 4/5")
-        5 -> print("Эрудиция 5/5")
+    val currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1
+    (currentMonth .. Integer.valueOf(onMonths) + currentMonth).forEach { month ->
+        val newSum = depositSum + (depositSum * depositPercent/100)
+        println("${getMonth(month)}: $depositSum станет $newSum")
+        depositSum = newSum
     }
 }
+
+fun getMonth(month: Int): String {
+    val expression = if (month > 13){
+        month%12 - 1
+    }
+    else{
+        month%12
+    }
+
+    return when(expression) {
+        0 -> "Январь"
+        1 -> "Февраль"
+        2 -> "Март"
+        3 -> "Апрель"
+        4 -> "Май"
+        5 -> "Июнь"
+        6 -> "Июль"
+        7 -> "Август"
+        8 -> "Сентябрь"
+        9 -> "Октябрь"
+        10 -> "Ноябрь"
+        11 -> "Декабрь"
+        else -> "Не удалось рассчитать ммесяц"
+    }
+}
+
+
 
 
 

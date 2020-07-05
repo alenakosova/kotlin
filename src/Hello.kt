@@ -1,47 +1,31 @@
 import java.util.*
 fun main() {
-    println("Введите сумму вклада:")
-    var depositSum: Int = Integer.valueOf(readLine())
+    val table = Array(4) { Array(3) { Array(3) {""}} }
+    table[0][0][0] = "Страна"
+    table[0][1][1] = "Столица"
+    table[0][2][2] = "Валюта"
 
-    println("Введите количество месяцев для вклада:")
-    val onMonths: Int = Integer.valueOf(readLine())
+    table[1][0][0] = "Россия"
+    table[2][0][0] = "Испания"
+    table[3][0][0] = "США"
 
-    println("Введите ежемесячный процент по вкладу:")
-    val depositPercent = Integer.valueOf(readLine())
+    table[1][1][1] = "Москва"
+    table[2][1][1] = "Мадрид"
+    table[3][1][1] = "Вашингтон"
 
-    val currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1
-    (currentMonth .. Integer.valueOf(onMonths) + currentMonth).forEach { month ->
-        val newSum = depositSum + (depositSum * depositPercent/100)
-        println("${getMonth(month)}: $depositSum станет $newSum")
-        depositSum = newSum
+    table[1][2][2] = "Рубль"
+    table[2][2][2] = "Евро"
+    table[3][2][2] = "Доллар"
+
+    for(row in table){
+        for(cell in row) {
+            for (cell2 in cell) {
+                print("$cell2\t")
+            }
+        }
+        println()
     }
 }
-
-fun getMonth(month: Int): String {
-    val expression = if (month > 13){
-        month%12 - 1
-    }
-    else{
-        month%12
-    }
-
-    return when(expression) {
-        0 -> "Январь"
-        1 -> "Февраль"
-        2 -> "Март"
-        3 -> "Апрель"
-        4 -> "Май"
-        5 -> "Июнь"
-        6 -> "Июль"
-        7 -> "Август"
-        8 -> "Сентябрь"
-        9 -> "Октябрь"
-        10 -> "Ноябрь"
-        11 -> "Декабрь"
-        else -> "Не удалось рассчитать ммесяц"
-    }
-}
-
 
 
 

@@ -1,3 +1,4 @@
-fun main() {
-var a = {n:Array<String> -> n.forEach {item -> println(item)}}
+fun main() = 12.00.sqrt()
+fun Double.sqrt(){
+    print(kotlin.math.sqrt(this))
 }

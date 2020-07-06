@@ -1,11 +1,12 @@
 fun main(){
-    val somePlane = Aircraft("001", 20000, 10000)
-    print(somePlane.fuelPerKm)
+Boeing747(25, "001", 20000, 10000)
 }
 
-class Aircraft (var planeNumber: String, var maxRange: Int, var tankCapacity: Int){
+open class Aircraft (var planeNumber: String, var maxRange: Int, var tankCapacity: Int){
     var fuelPerKm = 4
         get() {
             return maxRange/tankCapacity
         }
 }
+
+class Boeing747(var passengers:Int, planeNumber:String, maxRange:Int, tankCapacity:Int) : Aircraft(planeNumber, maxRange, tankCapacity)

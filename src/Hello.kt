@@ -1,5 +1,5 @@
 fun main(){
-Boeing747(25, "001", 20000, 10000)
+Boeing747("001", 20000, 10000, 25)
 }
 
 open class Aircraft (var planeNumber: String, var maxRange: Int, var tankCapacity: Int){
@@ -9,4 +9,14 @@ open class Aircraft (var planeNumber: String, var maxRange: Int, var tankCapacit
         }
 }
 
-class Boeing747(var passengers:Int, planeNumber:String, maxRange:Int, tankCapacity:Int) : Aircraft(planeNumber, maxRange, tankCapacity)
+class Boeing747(planeNumber:String, maxRange:Int, tankCapacity:Int, countPassengers:Int) : Aircraft(planeNumber, maxRange, tankCapacity), Passenger{
+    override val passengers:Int
+    init{
+        passengers = countPassengers
+    }
+}
+
+interface Passenger {
+    val passengers:Int
+}
+

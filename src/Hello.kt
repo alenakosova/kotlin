@@ -2,7 +2,7 @@ fun main(){
 Boeing747("001", 20000, 10000, 25)
 }
 
-open class Aircraft (var planeNumber: String, var maxRange: Int, var tankCapacity: Int){
+abstract class Aircraft (var planeNumber: String, var maxRange: Int, var tankCapacity: Int){
     var fuelPerKm = 4
         get() {
             return maxRange/tankCapacity
